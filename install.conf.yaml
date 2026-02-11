@@ -16,5 +16,6 @@
 #   - ~/downloads
 #   - ~/.vim/undo-history
 
-# - shell:
+- shell:
+    - echo "hey you guys."
 #  - [git submodule update --init --recursive, Installing submodules]
