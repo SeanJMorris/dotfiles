@@ -6,12 +6,13 @@
 
 - link:
     ~/.zshrc: zshrc 
+    ~/.gitconfig: gitconfig
 #   ~/.tmux.conf: tmux.conf
 #    ~/.vim: vim
 #    ~/.vimrc: vimrc
 
-- create:
-    - ~/hey/you/guys
+#- create:
+#   - ~/hey/you/guys
 #   - ~/downloads
 #   - ~/.vim/undo-history
 
