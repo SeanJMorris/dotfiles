@@ -7,6 +7,11 @@
 - link:
     ~/.zshrc: zshrc 
     ~/.gitconfig: gitconfig
+    ~/.bashrc: bashrc
+    ~/.bash_aliases: bash_aliases
+    ~/.vim: vim
+    ~/.vimrc: vimrc
+
 #   ~/.tmux.conf: tmux.conf
 #    ~/.vim: vim
 #    ~/.vimrc: vimrc
@@ -17,5 +22,10 @@
 #   - ~/.vim/undo-history
 
 - shell:
-    - echo "hey you guys."
 #  - [git submodule update --init --recursive, Installing submodules]
+    - echo "hey you guys."
+    - sleep 2
+    -
+      command: ./test.zsh
+      stdout: true
+      stderr: true

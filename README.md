@@ -28,3 +28,4 @@ No. | File/Directory | Reason
 - Trackpad (Three Finger Drag and Tap To Click)
 - .zshrc
 - Git (config and SSH)
+- Homebrew install
