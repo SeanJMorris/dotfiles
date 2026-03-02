@@ -5,7 +5,7 @@
 - clean: ['~']
 
 - link:
-    ~/.zshrc: zshrc 
+    ~/.zshrc: zshrc
     ~/.gitconfig: gitconfig
     ~/.bashrc: bashrc
     ~/.bash_aliases: bash_aliases
@@ -22,10 +22,7 @@
 #   - ~/.vim/undo-history
 
 - shell:
-#  - [git submodule update --init --recursive, Installing submodules]
-    - echo "hey you guys."
-    - sleep 2
     -
-      command: ./test.zsh
+      command: ./setup_homebrew.zsh
       stdout: true
       stderr: true

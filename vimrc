@@ -9,7 +9,6 @@
 "               
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 ".----------------------------------------------------------------------------.
 "|                                                                            |
 "| ░█▀▀░█▀▄░█▀█░█▄█░░░▀█▀░█░█░█▀▀░░░█░█░▀█▀░█▄█░░░█▀█░█▀▄░█▀█░▀▀█░█▀▀░█▀▀░▀█▀ |
@@ -17,49 +16,48 @@
 "| ░▀░░░▀░▀░▀▀▀░▀░▀░░░░▀░░▀░▀░▀▀▀░░░░▀░░▀▀▀░▀░▀░░░▀░░░▀░▀░▀▀▀░▀▀░░▀▀▀░▀▀▀░░▀░ |
 "|                                                                            |
 "'----------------------------------------------------------------------------'
-"
-"
-" An example for a vimrc file.
-"
-" Maintainer:	The Vim Project <https://github.com/vim/vim>
-" Last Change:	2023 Aug 10
-" Former Maintainer:	Bram Moolenaar <Bram@vim.org>
-"
-" To use it, copy it to
-"	       for Unix:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"	 for MS-Windows:  $VIM\_vimrc
-"	      for Haiku:  ~/config/settings/vim/vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+" The configurations below are from the Vim Project <https://github.com/vim/vim>
+" Some of the original commands have been deleted by me, Sean. I have also
+" inserted additional comments for context.
 
-" When started as "evim", evim.vim will already have done these settings, bail
-" out.
-if v:progname =~? "evim"
-  finish
-endif
 
-" Get the defaults that most users want.
+" Get the defaults that most users want, like showing cursor position. If you 
+" don't have a vimrc file, then defaults.vim is opened automatically, but if
+" you do have a vimrc, you have to include this. 
 source $VIMRUNTIME/defaults.vim
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file (restore to previous version)
-  if has('persistent_undo')
-    set undofile	" keep an undo file (undo changes after closing)
-  endif
-endif
+" HANDLING BACKUP, UNDO, AND SWAP FILES (DEPRECATED)
+" --------------------------------------------------
+" vms means an OpenVMS system which is from the 80s/90s, which has its own way
+" of managing files. You'll almost certainly never be running this on vms in
+" your life, but it's standard so don't worry about it. 
+" set backup keeps the file.txt~ which is a snapshot of your file before your
+" most recent save
+" set undofile keeps the file.txt.un~ which is your entire undo history
+" file.txt.un~  which is the complete undo history
 
+" if has("vms")
+"   set nobackup		" do not keep a backup file, use versions instead
+" else
+"   set backup		" keep a backup file (restore to previous version)
+"   if has('persistent_undo')
+"     set undofile	" keep an undo file (undo changes after closing)
+"   endif
+" endif
+
+
+" This lets you clear highlighting with <C-l> (Ctrl + l) after a search
 if &t_Co > 2 || has("gui_running")
   " Switch on highlighting the last used search pattern.
   set hlsearch
   nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 endif
 
-" Put these in an autocmd group, so that we can delete them easily.
+" This code ensures that whenever you open a plain text file, your lines are
+" automatically capped at 78 characters. This is a common practice to keep
+" files readable without horizontal scrolling.
 augroup vimrcEx
   au!
-
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
 augroup END
@@ -192,7 +190,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " MAPPINGS --------------------------------------------------------------- {{{
 
 " Set the comma as the leader key.
- let mapleader = ","
+ let mapleader = " "
 
 " Press \\ to jump back to the last cursor position.
 " SEAN COULDN'T FIGURE OUT HOW TO MAKE THIS USEFUL WHEN HE INSTALLED ALL OF
@@ -239,25 +237,32 @@ set laststatus=2
 " }}}
 
 
-
-" ADDITIONAL CHANGES ACCORDING TO SEAN'S PREFERENCES
+" ░█▀▀░█▀▀░█▀█░█▀█░▀░█▀▀░░░█▀█░█▀▄░█▀▀░█▀▀░█▀▀░█▀▄░█▀▀░█▀█░█▀▀░█▀▀░█▀▀
+" ░▀▀█░█▀▀░█▀█░█░█░░░▀▀█░░░█▀▀░█▀▄░█▀▀░█▀▀░█▀▀░█▀▄░█▀▀░█░█░█░░░█▀▀░▀▀█
+" ░▀▀▀░▀▀▀░▀░▀░▀░▀░░░▀▀▀░░░▀░░░▀░▀░▀▀▀░▀░░░▀▀▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
 "
-" Highlight the number row and change the number row font to visually differentiate it from the code
+" SECTIONS ARE DENOTED WITH LINES WITH ALL CAPS AND A LINE BREAK LIKE THIS
+" ------------------------------------------------------------------------
+
+" HIGHLIGHT THE NUMBER ROW AND CHANGE THE NUMBER ROW FONT TO VISUALLY
+" DIFFERENTIATE IT FROM THE CODE
+" -------------------------------------------------------------------
 highlight LineNr ctermbg=darkgray guibg=darkgray ctermfg=green
 
-" Change cursor depending on the mode:
+" CHANGE CURSOR DEPENDING ON THE MODE:
+" ------------------------------------
 " 1 or 0 -> blinking block
 " 2 -> solid block
 " 3 -> blinking underscore
 " 4 -> solid underscore
 " 5 -> blinking vertical bar
 " 6 -> solid vertical bar
-
 let &t_SI = "\e[5 q" " Insert mode: vertical bar
 let &t_SR = "\e[4 q" " Replace mode: underline
-let &t_EI = "\e[2 q" " Normal Mode: solid block
+let &t_EI = "\e[1 q" " Normal Mode: solid block
 
-" CLIPBOARD ACCESS
+" SYSTEM CLIPBOARD ACCESS - MAKE CTRL+V and CTRL+C WORK IN VIM
+" ------------------------------------------------------------
 " Apparently, clipboard access only works if you have something like gvim installed
 " (I don't really know why), but once you do have it installed (which you can
 " do with: 
@@ -266,22 +271,62 @@ let &t_EI = "\e[2 q" " Normal Mode: solid block
 " 'clipboard' anywhere when you type: 
 "`vim --version | grep clipboard` 
 set clipboard=unnamedplus
-"
 " See video here (https://www.youtube.com/watch?v=E_rbfQqrm7g) for an
 " alternative to the unnamedplus option above, which is 
 "vnoremap <C-c> "+y
 "map <C-v> "+P
-"
+
 "USE CTRL + BACKSPACE TO DELETE WHOLE PREVIOUS WORD IN INSERT MODE
+" ----------------------------------------------------------------
 "Note that Ctrl + w ("<C-w>" in vim notation syntax) deletes the whole
 "previous word in insert_mode;more words-separated
 inoremap <C-BS> <C-W>
 "
-"ABSOLUTE NUMBERS BY DEFAULT AND IN NORMAL MODE, RELATIVE NUMBERS IN INSERT MODE
+" SET RELATIVE AND ABSOLUTE NUMBERS BASED ON THE MODE
+" ---------------------------------------------------
+" Relative numbers in normal mode, (and by default)
+" Absolute numbers in insert mode
+" Absolute numbers in command mode
+" Absolute numbers when terminal loses focus
 set relativenumber
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
+autocmd CmdlineEnter * set norelativenumber | redraw
+autocmd CmdlineLeave * set relativenumber
+autocmd FocusLost * set norelativenumber
+autocmd FocusGained * set relativenumber
 
-" CLEAR SEARCH HIGHLIGHTING WITH <C-l>
-" nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+" HANDLING BACKUP, UNDO, AND SWAP FILES
+" -------------------------------------
+" instead of the code in 'HANDLING BACKUP, UNDO, AND SWAP FILES (DEPRECATED)'
+" above, we will store the undo files (file.txt.un~), and the backup files
+" (file.txt~) and the swap files (file.swp~) in separate directories in the
+" .vim file itself:
 
+" 1. Define paths
+let vim_dir = $HOME . '/.vim'
+let backup_dir = vim_dir . '/backup'
+let undo_dir   = vim_dir . '/undo-history'
+let swap_dir   = vim_dir . '/swap'
+
+" 2. Create directories (silent failure if they exist)
+for d in [backup_dir, undo_dir, swap_dir]
+    if !isdirectory(d) | call mkdir(d, "p") | endif
+endfor
+
+" 3. Apply Settings
+set backup
+let &backupdir = backup_dir
+let &directory = swap_dir 
+
+if has('persistent_undo')
+    set undofile
+    let &undodir = undo_dir
+endif
+
+" REMAP LEADER + D TO DELETE THE CURRENT LINE
+" -------------------------------------------
+nnoremap <leader>d dd
+
+" DELETE A SINGLE CHARACTER WITHOUT COPYING IT
+noremap <leader>x "_x
