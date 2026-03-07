@@ -1,12 +1,13 @@
 
 . "$HOME/.local/bin/env"
 
-echo 'You have started a zsh shell!'
+echo 'zsh shell started'
 
 # Set Variables
 # Syntax highlighting for man pages using bat (a supercharged cat - see
 # https://github.com/sharkdp/bat)
 export MANPAGER="bat -plman"
+export HOMEBREW_CASK_OPTS="--no-quarantine"
 
 # Change ZSH Options
 

@@ -3,3 +3,8 @@
 
 # All swap files (which end with .swp
 *.swp
+
+# Vim backup, swap, and undo files
+vim/backup/
+vim/swap/
+vim/undo-history/
