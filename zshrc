@@ -13,11 +13,13 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 
 
 # Create Aliases
-alias ll="ls -lAFh"
+alias ll='ls -lAFh'
+alias la='eza -la --header --classify --git'
 alias pj='cd ~/projects'
 alias pjj='cd ~/projects && ll'
 alias oo='cd /mnt/c/Users/seanj/Onedrive && ll'
 alias gg='cd "/mnt/c/Users/seanj/Google Drive" && ll'
+alias cl='clear'
 
 mkcd() {
 	mkdir -p "$1" && cd "$1"
