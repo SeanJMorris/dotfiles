@@ -4,7 +4,9 @@
 # All swap files (which end with .swp
 *.swp
 
-# Vim backup, swap, and undo files
+# Vim backup, swap, undo and network read/write history files
 vim/backup/
 vim/swap/
 vim/undo-history/
+vim/.netrwhist
+vim/.netrwhist~

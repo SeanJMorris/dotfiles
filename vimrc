@@ -324,6 +324,13 @@ if has('persistent_undo')
     let &undodir = undo_dir
 endif
 
+" Addendum: dealing with netrwhist
+" netrwhist stands for Network Read/Write History - it's the place where you
+" store the last 10 directories you've visited (and you can't manage it the
+" same way you do with backup, swap, and undo files because it's a default
+" plugin with its own weird logic).
+let g:netrw_home = '$HOME/.vim'
+
 " REMAP LEADER + D TO DELETE THE CURRENT LINE
 " -------------------------------------------
 nnoremap <leader>d dd
