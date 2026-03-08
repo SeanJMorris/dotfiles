@@ -29,3 +29,4 @@ No. | File/Directory | Reason
 - .zshrc
 - Git (config and SSH)
 - Homebrew install
+- Did not do: Turn off Spotlight in favor of Alfred.
