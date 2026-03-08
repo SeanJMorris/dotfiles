@@ -15,6 +15,6 @@ echo "\n<<< Starting Homebrew Setup >>>\n"
 # that yet.
 brew install httpie
 brew install bat
-brew install git
 brew install eza
+# brew install git
 # brew install fzf
