@@ -2,6 +2,8 @@
 
 echo "\n<<< Starting Homebrew Setup >>>\n"
 
+
+# Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # TODO: keep an eye out for a different `--no-quarantine` solution.

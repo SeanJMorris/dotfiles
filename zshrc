@@ -53,4 +53,13 @@ function mkcd() {
 
 # For WSL - add homebrew to profile so that it knows to use homebrew - without
 # this, after you install homebrew wsl won't recognize that it's been installed
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+#
+# Only initialize Homebrew if 'brew' isn't already a command
+if ! command -v brew &> /dev/null; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+
+
+
