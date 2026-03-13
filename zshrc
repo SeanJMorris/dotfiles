@@ -16,9 +16,9 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 alias ll='ls -lAFh'
 alias la='eza -la --header --classify --git'
 alias pj='cd ~/projects'
-alias pjj='cd ~/projects && ll'
-alias oo='cd /mnt/c/Users/seanj/Onedrive && ll'
-alias gg='cd "/mnt/c/Users/seanj/Google Drive" && ll'
+alias pjj='cd ~/projects && la'
+alias oo='cd /mnt/c/Users/seanj/Onedrive && la'
+alias gg='cd "/mnt/c/Users/seanj/Google Drive" && la'
 alias cl='clear'
 
 mkcd() {
@@ -26,7 +26,7 @@ mkcd() {
 }
 
 cdl() {
-	cd "$1" && ll
+	cd "$1" && la
 }
 
 
