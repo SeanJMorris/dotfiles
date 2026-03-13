@@ -13,13 +13,14 @@ To set up a dotfile symlink:
 
 Files/Directories it does not make sense to include in .dotfiles:
 
-No. | File/Directory | Reason
-1 | .ssh | You don't want your public and private keys on the internet for everyone to see. You *could* put the config file in, but if you regularly do server work, but you don't need that for now.
-2 | .zsh_history | This changes too frequently to bother changing. 
-3 | .lesshst | This is created automatically when you access the man pages and stores history there. It's not necessary to keep in .dotfiles.
+|No. | File/Directory | Reason|
+|----|----------------|-------|
+|1 | .ssh | You don't want your public and private keys on the internet for everyone to see. You *could* put the config file in, but if you regularly do server work, but you don't need that for now.|
+|2 | .zsh_history | This changes too frequently to bother changing. |
+|3 | .lesshst | This is created automatically when you access the man pages and stores history there. It's not necessary to keep in .dotfiles.|
 
 
-## To Do 
+## To Do
 - Terminal Preferences
 - Change Shell to zsh
 - Dock preferences
