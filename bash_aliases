@@ -12,6 +12,7 @@ alias cl='clear'
 # `trail` will itemize the directories in $PATH. Note that syntax for bash is
 # distinct from that of zsh.
 alias trail='echo $PATH | tr ":" "\n"'
+alias reload="source ~/.bashrc"
 
 mkcd() {
 	mkdir -p "$1" && cd "$1"

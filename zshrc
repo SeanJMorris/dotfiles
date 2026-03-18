@@ -23,6 +23,8 @@ alias cl='clear'
 # `trail` will itemize the list of variables in $PATH. Note this syntax is
 # specific to zsh. Bash has another version.
 alias trail='<<<${(F)path}'
+alias tree='eza --tree --level=2'
+alias reload="source ~/.zshrc"
 
 mkcd() {
 	mkdir -p "$1" && cd "$1"
