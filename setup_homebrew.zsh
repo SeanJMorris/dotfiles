@@ -23,5 +23,6 @@ fi
 brew install httpie
 brew install bat
 brew install eza
+brew install zsh
 # brew install git
 # brew install fzf
