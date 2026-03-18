@@ -4,10 +4,13 @@
 echo 'zsh shell started'
 
 # SET VARIABLES
-# Syntax highlighting for man pages using bat (a supercharged cat - see
-# https://github.com/sharkdp/bat)
+    # Syntax highlighting for man pages using bat (a supercharged cat - see
+    # https://github.com/sharkdp/bat)
 export MANPAGER="bat -plman"
 export HOMEBREW_CASK_OPTS="--no-quarantine"
+    # option that will change default from cat to bat (this supports the `trail`
+    # alias below
+export NULLCMD=bat
 
 # Change ZSH Options
 
@@ -20,8 +23,10 @@ alias pjj='cd ~/projects && la'
 alias oo='cd /mnt/c/Users/seanj/Onedrive && la'
 alias gg='cd "/mnt/c/Users/seanj/Google Drive" && la'
 alias cl='clear'
-# `trail` will itemize the list of variables in $PATH. Note this syntax is
-# specific to zsh. Bash has another version.
+    # `trail` will itemize the list of variables in $PATH. Note this syntax is
+    # specific to zsh. Bash has another version.
+        # `path` outputs an array (multiple values) while `PATH` outputs a single
+        # string (a "scalar")
 alias trail='<<<${(F)path}'
 alias tree='eza --tree --level=2'
 alias reload="source ~/.zshrc"
