@@ -12,7 +12,13 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
     # alias below
 export NULLCMD=bat
 
-# Change ZSH Options
+# CHANGE ZSH OPTIONS
+# add a horizontal line after next command line
+autoload -Uz add-zsh-hook
+my-precmd() {
+  print -r -- ${(r:$COLUMNS::─:)}
+}
+add-zsh-hook precmd my-precmd
 
 
 # CREATE ALIASES
