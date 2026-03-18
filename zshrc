@@ -3,7 +3,7 @@
 
 echo 'zsh shell started'
 
-# Set Variables
+# SET VARIABLES
 # Syntax highlighting for man pages using bat (a supercharged cat - see
 # https://github.com/sharkdp/bat)
 export MANPAGER="bat -plman"
@@ -12,7 +12,7 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 # Change ZSH Options
 
 
-# Create Aliases
+# CREATE ALIASES
 alias ll='ls -lAFh'
 alias la='eza -la --header --classify --git'
 alias pj='cd ~/projects'
@@ -20,6 +20,9 @@ alias pjj='cd ~/projects && la'
 alias oo='cd /mnt/c/Users/seanj/Onedrive && la'
 alias gg='cd "/mnt/c/Users/seanj/Google Drive" && la'
 alias cl='clear'
+# `trail` will itemize the list of variables in $PATH. Note this syntax is
+# specific to zsh. Bash has another version.
+alias trail='<<<${(F)path}'
 
 mkcd() {
 	mkdir -p "$1" && cd "$1"
@@ -30,7 +33,7 @@ cdl() {
 }
 
 
-# Customize Prompt(s)
+# CUSTOMIZE PROMPT(S)
 PROMPT='
 zsh %1~ %L %# '
 
@@ -38,19 +41,21 @@ RPROMPT='%*'
 
 # Add Locations to $PATH Variable
 # in the .dotfiles course, Patrick added visual studio code to the path with:
-# export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-# but I'm not doing this right now because using `code` in the command line already opens a VS code window.
-# See video "33. Add Code Binary to $PATH Variable" for more info. Keep in mind,
-# though, that this references the other videos previously, so you might have to watch more videos at once.
+# export PATH="$PATH:/Applications/Visual Studio
+# Code.app/Contents/Resources/app/bin" but I'm not doing this right now because
+# using `code` in the command line already opens a VS code window.  See video
+# "33. Add Code Binary to $PATH Variable" for more info. Keep in mind, though,
+# that this references the other videos previously, so you might have to watch
+# more videos at once.
 
-# Write Handy Functions
+# WRITE HANDY FUNCTIONS
 function mkcd() {
     mkdir -p "$@" && cd "$_";
 }
 
 
 
-# ... and Other Surprises!
+# ... AND OTHER SURPRISES!
 
 # For WSL - add homebrew to profile so that it knows to use homebrew - without
 # this, after you install homebrew wsl won't recognize that it's been installed
