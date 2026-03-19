@@ -10,7 +10,7 @@
     ~/.gitconfig: gitconfig
     ~/.bashrc: bashrc
     ~/.bash_aliases: bash_aliases
-    ~/.vim: vim
+    ~/.vim/: vim/
     ~/.vimrc: vimrc
     ~/.config/bat/:
       create: true
@@ -24,7 +24,9 @@
 #   - ~/.vim/undo-history
 
 - shell:
-    -
-      command: ./setup_homebrew.zsh
+    - command: ./setup_homebrew.zsh
+      stdout: true
+      stderr: true
+    - command: ./setup_zsh.zsh
       stdout: true
       stderr: true
