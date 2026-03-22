@@ -1,4 +1,7 @@
-echo 'Hello from .zshenv'
+# zshenv is for setting environment variables. It's the first file that's read
+# when zsh starts, and it starts for all shells (interactive, non-interactive,
+# login, non-login, and their permutations). zshrc is run for all interactive
+# shells
 
 function exists() {
     # Description: Check for the existence of the passed-in command but discard
@@ -36,6 +39,5 @@ function exists() {
     
     # short, valid version of this command: 
     command -v $1 >/dev/null 2>&1
-    
 }
 

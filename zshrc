@@ -1,7 +1,7 @@
 
 . "$HOME/.local/bin/env"
 
-echo 'zsh shell started'
+echo 'loading zshrc...'
 
 # SET VARIABLES
     # Syntax highlighting for man pages using bat (a supercharged cat - see
