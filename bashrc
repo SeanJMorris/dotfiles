@@ -131,7 +131,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval $(ssh-agent)
 
-# NOTE FROM SEAN 3.18.2025 - PLEASE ADD ALIASES INTO THE ~/.bash_aliases FILE INSTEAD OF ADDING THEM HERE TO STAY ORGANIZED
+# NOTE FROM SEAN 3.18.2025 - PLEASE ADD ALIASES INTO THE ~/.bash_aliases FILE
+# INSTEAD OF ADDING THEM HERE TO STAY ORGANIZED
 
 PATH="/home/scjmorris/.pyenv/shims:/home/scjmorris/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/seanj/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/seanj/AppData/Roaming/npm:/mnt/c/Users/seanj/.lando/bin:/mnt/c/Program Files/MySQL/MySQL Server 8.4/bin:/mnt/c/Users/seanj/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/seanj/AppData/Local/Microsoft/WinGet/Packages/w4po.ExplorerTabUtility_Microsoft.Winget.Source_8wekyb3d8bbwe/ExplorerTabUtility:/snap/bin:~/.local/bin/"
 
@@ -140,18 +141,36 @@ PATH="/home/scjmorris/.pyenv/shims:/home/scjmorris/.pyenv/bin:/usr/local/sbin:/u
 # Set vim as the default mode
 #set -o vi
 
-# This is the first attempt to address an issue with streamlit: Add ~/.local/bin to PATH - this was originally done on 6/29/25 as part of a streamlit personal project.
+# This is the first attempt to address an issue with streamlit: Add
+# ~/.local/bin to PATH - this was originally done on 6/29/25 as part of a
+# streamlit personal project.
 export PATH="$HOME/.local/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# FUNCTION TO DRAW A LINE AND ADD SPACING TO BE ABLE TO DIFFERENTIATE COMMANDS
+# AND OUTPUTS
+my_precmd() {
+    # Print a blank line first
+    echo ""
+    # Draw the horizontal line (uses printf to repeat the character)
+    printf '─%.0s' $(seq 1 $COLUMNS)
+    echo ""
+}
+
+# Tell Bash to run this function every time before showing the prompt
+PROMPT_COMMAND=my_precmd
+
+# Set your multi-line Bash prompt
+# \w = current directory, \$ = user/root symbol, \n = newline
+PS1='\w\n\$ '
 
 # ADDED BY SEAN DURING .DOTFILES COURSE ON UDEMY
 # Customize Prompt(s)
-export PS1='
-bash \W $SHLVL \$ '
+export PS1='bash \W $SHLVL 
+\$ '
 
 # For WSL - add homebrew to profile so that it knows to use homebrew - without
 # this, after you install homebrew wsl won't recognize that it's been installed

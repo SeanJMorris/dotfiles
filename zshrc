@@ -13,13 +13,14 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 export NULLCMD=bat
 
 # CHANGE ZSH OPTIONS
-# add a horizontal line after next command line
-autoload -Uz add-zsh-hook
-my-precmd() {
-  print -r -- ${(r:$COLUMNS::─:)}
+# add a horizontal line after output
+my-line-separator() {
+    print "" 
+    print -r -- ${(r:$COLUMNS::─:)}
 }
-add-zsh-hook precmd my-precmd
-
+  
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd my-line-separator
 
 # CREATE ALIASES
 alias ll='ls -lAFh'
@@ -47,8 +48,8 @@ cdl() {
 
 
 # CUSTOMIZE PROMPT(S)
-PROMPT='
-zsh %1~ %L %# '
+PROMPT='zsh %1~ %L 
+%# '
 
 RPROMPT='%*'
 
