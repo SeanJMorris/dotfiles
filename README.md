@@ -1,13 +1,17 @@
 # dotfiles
 Sean's personal dotfiles.
 
-Thanks to Patrick McDonald for guidance offered in his Udemy course.
+Thanks to Patrick McDonald for guidance offered in his Udemy course.  For a
+overview of what's in this repo, watch video "81. Cultivate Skills Section
+Conclusion" from Patrick's course, available
+[here](https://www.udemy.com/course/dotfiles-from-start-to-finish-ish/).
 
-# Setting Up Dotfiles
+# To Set Up Dotfiles
 To set up a dotfile symlink:
 1. Rename the original dotfile (.zshrc) so that it does NOT have a . prefix. Any given dotfile MUST begin with a dot. For now, though, you're creating an authoritative, trackable version in your own ~/.dotfiles directory and you will create a new version WITH a dot that links to this trackable version in the third step
 2. Move this new dotless dotfile into your `~/.dotfiles/` directory.
 3. Use `ln -s {source} {target}` where {source} is the authoritative/real copy and the {target} is the faux file that points to the original, e.g. `ln -s ~/.dotfiles/zshrc ~/.zshrc`
+
 
 ## Notes
 
