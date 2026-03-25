@@ -81,5 +81,9 @@ if ! command -v brew &> /dev/null; then
 fi
 
 
-
-
+# FZF CONFIGURATIONS
+export FZF_DEFAULT_OPTS="--layout=reverse --border --info=inline --bind 'ctrl-/:toggle-preview' --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+#if fzf.zsh is present in home folder, then source it
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.zsh ] && source /home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.zsh
+[ -f /home/linuxbrew/.linuxbrew/opt/fzf/shell/completion.zsh ] && source /home/linuxbrew/.linuxbrew/opt/fzf/shell/completion.zsh
